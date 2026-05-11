@@ -14,36 +14,117 @@ const updateHeaderState = () => {
 };
 
 const initSlider = () => {
-  if (!window.Swiper) {
+  const slider = document.querySelector(".gallery__slider");
+  const wrapper = slider?.querySelector(".swiper-wrapper");
+  const slides = wrapper ? [...wrapper.querySelectorAll(".swiper-slide")] : [];
+  const prevButton = document.querySelector(".slider-button--prev");
+  const nextButton = document.querySelector(".slider-button--next");
+  const pagination = document.querySelector(".gallery__pagination");
+
+  if (!slider || !wrapper || slides.length === 0 || !prevButton || !nextButton || !pagination) {
     return;
   }
 
-  new Swiper(".gallery__slider", {
-    loop: true,
-    speed: 450,
-    grabCursor: true,
-    keyboard: {
-      enabled: true,
+  let activeIndex = 0;
+  let slidesPerView = 1;
+  let gap = 0;
+  let startX = 0;
+
+  const getMaxIndex = () => Math.max(slides.length - slidesPerView, 0);
+
+  const updatePagination = () => {
+    const maxIndex = getMaxIndex();
+    const dotsCount = maxIndex + 1;
+
+    if (pagination.children.length !== dotsCount) {
+      pagination.replaceChildren();
+
+      for (let index = 0; index < dotsCount; index += 1) {
+        const dot = document.createElement("button");
+        dot.className = "swiper-pagination-bullet";
+        dot.type = "button";
+        dot.setAttribute("aria-label", `Перейти к слайду ${index + 1}`);
+        dot.addEventListener("click", () => {
+          activeIndex = index;
+          updateSlider();
+        });
+        pagination.append(dot);
+      }
+    }
+
+    [...pagination.children].forEach((dot, index) => {
+      dot.classList.toggle("swiper-pagination-bullet-active", index === activeIndex);
+    });
+  };
+
+  const updateSlider = () => {
+    const slideWidth = (slider.clientWidth - gap * (slidesPerView - 1)) / slidesPerView;
+
+    activeIndex = Math.min(Math.max(activeIndex, 0), getMaxIndex());
+    wrapper.style.gap = `${gap}px`;
+    wrapper.style.transform = `translateX(${-activeIndex * (slideWidth + gap)}px)`;
+
+    slides.forEach((slide) => {
+      slide.style.width = `${slideWidth}px`;
+    });
+
+    updatePagination();
+  };
+
+  const setDirection = (step) => {
+    activeIndex += step;
+
+    if (activeIndex < 0) {
+      activeIndex = getMaxIndex();
+    } else if (activeIndex > getMaxIndex()) {
+      activeIndex = 0;
+    }
+
+    updateSlider();
+  };
+
+  const syncLayout = () => {
+    const isWide = window.matchMedia("(min-width: 641px)").matches;
+
+    slidesPerView = isWide ? 3 : 1;
+    gap = isWide ? 16 : 0;
+    updateSlider();
+  };
+
+  prevButton.addEventListener("click", () => setDirection(-1));
+  nextButton.addEventListener("click", () => setDirection(1));
+  window.addEventListener("resize", syncLayout);
+
+  slider.addEventListener(
+    "touchstart",
+    (event) => {
+      startX = event.touches[0].clientX;
     },
-    navigation: {
-      prevEl: ".slider-button--prev",
-      nextEl: ".slider-button--next",
+    { passive: true },
+  );
+
+  slider.addEventListener(
+    "touchend",
+    (event) => {
+      const deltaX = event.changedTouches[0].clientX - startX;
+
+      if (Math.abs(deltaX) > 48) {
+        setDirection(deltaX > 0 ? -1 : 1);
+      }
     },
-    pagination: {
-      el: ".gallery__pagination",
-      clickable: true,
-    },
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-        spaceBetween: 0,
-      },
-      641: {
-        slidesPerView: 3,
-        spaceBetween: 16,
-      },
-    },
+    { passive: true },
+  );
+
+  slider.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      setDirection(-1);
+    } else if (event.key === "ArrowRight") {
+      setDirection(1);
+    }
   });
+
+  slider.tabIndex = 0;
+  syncLayout();
 };
 
 const formatPhone = (value) => {
