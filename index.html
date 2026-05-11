@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Уютная кухня - домашняя кухня в центре города. Онлайн-бронирование столов."
+    />
+    <meta property="og:title" content="Уютная кухня" />
+    <meta
+      property="og:description"
+      content="Бронируйте стол онлайн - мы подготовим всё к вашему приходу."
+    />
+    <meta property="og:type" content="website" />
+    <title>Уютная кухня - бронирование столов</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header" data-header>
+        <a class="logo" href="#top" aria-label="Уютная кухня">
+          <img class="logo__mark" src="assets/img/logo-mark.png" alt="" width="30" height="37" />
+          <span class="logo__text">
+            <span class="logo__dark">Уютная</span>
+            <span class="logo__accent">кухня</span>
+          </span>
+        </a>
+        <nav class="main-nav" aria-label="Основная навигация">
+          <a class="main-nav__link" href="#gallery">Меню</a>
+          <a class="main-nav__link main-nav__link--accent" href="#booking">К бронированию</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero reveal" aria-labelledby="hero-title">
+          <picture class="hero__picture">
+            <source media="(max-width: 640px)" srcset="assets/img/hero-mobile.png" />
+            <img
+              class="hero__image"
+              src="assets/img/hero-desktop.png"
+              alt="Сервированный стол в уютном зале ресторана"
+              width="1080"
+              height="608"
+              fetchpriority="high"
+            />
+          </picture>
+          <h1 class="hero__title" id="hero-title">Домашняя кухня в центре города</h1>
+          <p class="hero__text">
+            Бронируйте стол онлайн - мы подготовим всё к вашему приходу.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#booking">Забронировать стол</a>
+          </div>
+        </section>
+
+        <div class="intro-link reveal">
+          <span>Нравится атмосфера?</span>
+          <a href="#booking">перейти к форме бронирования</a>
+        </div>
+
+        <section class="gallery reveal" id="gallery" aria-label="Галерея блюд и атмосферы">
+          <div class="gallery__shell">
+            <button
+              class="slider-button slider-button--prev"
+              type="button"
+              aria-label="Предыдущий слайд"
+            >
+              <span aria-hidden="true">‹</span>
+            </button>
+            <div class="swiper gallery__slider">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="assets/img/gallery-1.png" alt="Горячее блюдо в форме для запекания" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/img/gallery-2.png" alt="Стакан кофе навынос" loading="lazy" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/img/gallery-3.png" alt="Десерты и орехи" loading="lazy" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/img/gallery-4.png" alt="Фасад кафе с меню" loading="lazy" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/img/gallery-5.png" alt="Зелёный салат с томатами" loading="lazy" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/img/gallery-6.png" alt="Открытая кухня с горячими блюдами" loading="lazy" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/img/gallery-7.png" alt="Свежая выпечка на тарелке" loading="lazy" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/img/gallery-8.png" alt="Летние напитки в бокалах" loading="lazy" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/img/gallery-9.png" alt="Паста и напиток на столе" loading="lazy" />
+                </div>
+              </div>
+            </div>
+            <button
+              class="slider-button slider-button--next"
+              type="button"
+              aria-label="Следующий слайд"
+            >
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
+          <div class="gallery__pagination" aria-hidden="true"></div>
+        </section>
+
+        <section class="faq reveal" aria-labelledby="faq-title">
+          <h2 class="section-title" id="faq-title">Частые вопросы</h2>
+          <div class="faq__list">
+            <details class="faq__item" open>
+              <summary class="faq__question">
+                <span>Часы работы</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq__answer">
+                Пн-Чт 10:00-22:00 · Пт-Сб 10:00-23:00 · Вс 11:00-21:00
+              </div>
+            </details>
+            <details class="faq__item" open>
+              <summary class="faq__question">
+                <span>Как добраться</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq__answer">м. Тверская, 5 минут пешком. Вход со двора, домофон 42.</div>
+            </details>
+            <details class="faq__item" open>
+              <summary class="faq__question">
+                <span>Детям и особые пожелания</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq__answer">
+                Детское меню и стульчики. Сообщите об аллергиях в форме бронирования.
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section class="booking reveal" id="booking" aria-labelledby="booking-title">
+          <h2 class="booking__title" id="booking-title">Бронирование стола</h2>
+          <p class="booking__text">Заполните поля - перезвоним для подтверждения.</p>
+          <form
+            class="booking-form"
+            action="https://formsubmit.co/ajax/Vladeusdd@yandex.ru"
+            method="POST"
+            novalidate
+          >
+            <input type="hidden" name="_subject" value="Новая заявка на бронирование стола" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+
+            <div class="field">
+              <label class="field__label" for="first-name">Имя</label>
+              <input
+                class="field__control"
+                id="first-name"
+                name="Имя"
+                type="text"
+                autocomplete="given-name"
+                minlength="2"
+                required
+              />
+              <span class="field__error" data-error-for="first-name"></span>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="last-name">Фамилия</label>
+              <input
+                class="field__control"
+                id="last-name"
+                name="Фамилия"
+                type="text"
+                autocomplete="family-name"
+                minlength="2"
+                required
+              />
+              <span class="field__error" data-error-for="last-name"></span>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="email">Email</label>
+              <input
+                class="field__control"
+                id="email"
+                name="Email"
+                type="email"
+                autocomplete="email"
+                required
+              />
+              <span class="field__error" data-error-for="email"></span>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="phone">Телефон</label>
+              <input
+                class="field__control"
+                id="phone"
+                name="Телефон"
+                type="tel"
+                autocomplete="tel"
+                inputmode="numeric"
+                placeholder="+7(999)-999-99-99"
+                required
+              />
+              <span class="field__error" data-error-for="phone"></span>
+            </div>
+
+            <button class="button button--secondary" type="submit">Отправить</button>
+            <p class="booking-form__status" aria-live="polite" data-form-status></p>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="success-title" hidden>
+      <div class="modal__card">
+        <h2 class="modal__title" id="success-title">Заявка отправлена</h2>
+        <p class="modal__text">
+          Спасибо! Мы свяжемся с Вами в ближайшее время для подтверждения брони.
+        </p>
+        <button class="button button--muted" type="button" data-modal-close>Закрыть</button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
