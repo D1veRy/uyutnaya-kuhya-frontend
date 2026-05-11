@@ -15,12 +15,11 @@
     />
     <meta property="og:type" content="website" />
     <title>Уютная кухня - бронирование столов</title>
-    <style>
-      :root{--color-bg:#faf6f1;--color-card:#fff;--color-surface:#f3ede6;--color-border:#e0d8ce;--color-border-strong:#d4ccc2;--color-text:#2c2416;--color-muted:#5c5248;--color-accent:#c45c3e;--color-green:#5c6b4a;--color-button-muted:#e8dfd4;--color-error:#b7422f;--font-main:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--page-width:960px;--content-width:864px;--radius-lg:12px;--radius-md:10px;--radius-sm:8px;--shadow-soft:0 18px 40px rgba(44,36,22,.08)}*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:96px}body{min-width:320px;margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-main);font-size:16px;line-height:1.5}img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button,input{font:inherit}button{border:0;cursor:pointer}.page{width:min(100%,var(--page-width));margin:0 auto;padding:20px}.site-header{position:sticky;top:0;z-index:30;display:flex;flex-direction:column;align-items:flex-start;gap:10px;width:100%;padding:0;background:rgba(250,246,241,.92);background:color-mix(in srgb,var(--color-bg) 92%,transparent);backdrop-filter:blur(14px)}.logo{display:inline-flex;align-items:center;min-height:35px}.logo__mark{width:30px;height:37px;margin-left:4px;object-fit:contain}.logo__text{display:inline-flex;gap:6px;margin-left:13px;font-size:20px;line-height:1.22;white-space:nowrap}.logo__dark{font-weight:700}.logo__accent{color:var(--color-accent);font-weight:600}.main-nav{display:flex;align-items:center;gap:18px;color:var(--color-muted);font-size:14px;line-height:1.2}.main-nav__link--accent{color:var(--color-accent)}main{display:flex;flex-direction:column;gap:22px;padding-top:22px}.hero{display:flex;flex-direction:column;align-items:flex-start;gap:14px}.hero__picture{width:100%;height:200px;overflow:hidden;border-radius:var(--radius-md)}.hero__image{width:100%;height:100%;object-fit:cover}.hero__title{margin:0;color:var(--color-text);font-size:24px;font-weight:700;line-height:1.12}.hero__text{margin:0;color:var(--color-muted);font-size:15px;line-height:1.45}.hero__actions{display:flex;align-items:flex-start;min-height:100px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;border-radius:var(--radius-sm);font-weight:600;line-height:1.2}.button--primary{min-width:199px;padding:12px 22px;background:var(--color-accent);color:#fff;font-size:15px}.gallery__slider{overflow:hidden}.swiper-wrapper{display:flex;width:100%;height:100%}.swiper-slide{flex-shrink:0;width:100%;height:100%}@media (min-width:641px){.page{padding:48px}.site-header{flex-direction:row;align-items:center;justify-content:space-between;gap:24px}.main-nav{gap:24px;font-size:15px}main{gap:40px;padding-top:40px}.hero{gap:20px}.hero__picture{height:320px;border-radius:var(--radius-lg)}.hero__title{font-size:34px}.hero__text{font-size:17px;line-height:1.5}.hero__actions{min-height:auto}.button--primary{min-width:221px;min-height:47px;padding:14px 28px;font-size:16px}}
-    </style>
     <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="preload" href="assets/vendor/swiper/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript>
       <link rel="stylesheet" href="styles.css" />
+      <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
     </noscript>
     <link rel="icon" href="restaurant.png" type="image/png">
   </head>
@@ -235,6 +234,7 @@
       </div>
     </div>
 
+    <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
     <script src="script.js" defer></script>
   </body>
 </html>
