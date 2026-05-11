@@ -833,3 +833,9 @@ main {
     font-size: 15px;
   }
 }
+
+@media (max-width: 641px) {
+  .site-header.is-scrolled {
+    padding: 14px 0;
+  }
+}
