@@ -18,8 +18,39 @@ const initSlider = () => {
     return;
   }
 
-  new Swiper(".gallery__slider", {
+  const slider = document.querySelector(".gallery__slider");
+  const slides = slider ? [...slider.querySelectorAll(".swiper-wrapper > .swiper-slide")] : [];
+  const pagination = document.querySelector(".gallery__pagination");
+
+  if (!slider || slides.length === 0 || !pagination) {
+    return;
+  }
+
+  const updatePagination = (activeIndex) => {
+    [...pagination.children].forEach((dot, index) => {
+      dot.classList.toggle("swiper-pagination-bullet-active", index === activeIndex);
+      dot.setAttribute("aria-current", index === activeIndex ? "true" : "false");
+    });
+  };
+
+  let swiper = null;
+
+  pagination.replaceChildren(
+    ...slides.map((slide, index) => {
+      const dot = document.createElement("button");
+      dot.className = "swiper-pagination-bullet";
+      dot.type = "button";
+      dot.setAttribute("aria-label", `Слайд ${index + 1}`);
+      dot.addEventListener("click", () => {
+        swiper?.slideToLoop(index);
+      });
+      return dot;
+    }),
+  );
+
+  swiper = new Swiper(slider, {
     loop: true,
+    loopAdditionalSlides: slides.length,
     speed: 450,
     grabCursor: true,
     keyboard: {
@@ -29,10 +60,6 @@ const initSlider = () => {
       prevEl: ".slider-button--prev",
       nextEl: ".slider-button--next",
     },
-    pagination: {
-      el: ".gallery__pagination",
-      clickable: true,
-    },
     breakpoints: {
       0: {
         slidesPerView: 1,
@@ -41,6 +68,14 @@ const initSlider = () => {
       641: {
         slidesPerView: 3,
         spaceBetween: 16,
+      },
+    },
+    on: {
+      init(currentSwiper) {
+        updatePagination(currentSwiper.realIndex);
+      },
+      slideChange(currentSwiper) {
+        updatePagination(currentSwiper.realIndex);
       },
     },
   });
